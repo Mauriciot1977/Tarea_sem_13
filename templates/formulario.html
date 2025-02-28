@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Formulario - Mi Aplicación Flask{% endblock %}
+
+{% block content %}
+    <h2>Formulario</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.nombre.label }}<br>
+            {{ form.nombre(size=30) }}
+        </p>
+        <p>{{ form.submit }}</p>
+    </form>
+{% endblock %}

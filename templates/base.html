@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Mi Aplicación Flask {% endblock %}</title>
+    <title>{% block title %}Mi Aplicación Flask{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <header>
-        <h1>Mi Aplicación Flask de Mauricio Torres</h1>
+        <h1>Mi Aplicación Flask</h1>
         <nav>
             <ul>
                 <li><a href="{{ url_for('home') }}">Inicio</a></li>
                 <li><a href="{{ url_for('about') }}">Acerca de</a></li>
+                <li><a href="{{ url_for('formulario') }}">Formulario</a></li>
             </ul>
         </nav>
     </header>
@@ -22,7 +23,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Mi Aplicación Flask by Mauricio Torres</p>
+        <p>&copy; 2025 Mi Aplicación Flask</p>
     </footer>
 </body>
 </html>

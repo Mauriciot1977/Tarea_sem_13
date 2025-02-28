@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}Acerca de - Mi Aplicación Flask  {% endblock %}
+{% block title %}Inicio - Mi Aplicación Flask{% endblock %}
 
 {% block content %}
-    <h2>Acerca de</h2>
-    <p>Esta aplicación demuestra el uso de Flask con plantillas dinámicas.</p>
+    <h2>¡Bienvenido a mi aplicación Flask!</h2>
+    <p>Esta es la página principal de la aplicación. Navega a través de las secciones para explorar más.</p>
+    <p><a href="{{ url_for('formulario') }}">Ir al formulario</a></p>
 {% endblock %}
