@@ -7,7 +7,7 @@ def obtener_conexion():
             host='localhost',  # Cambia si tu servidor MySQL no está en localhost
             user='root',  # Reemplaza con tu usuario de MySQL
             password='Mauricio1977',  # Reemplaza con tu contraseña de MySQL
-            database='desarrollo_web',  # ⚠️ Revisa que el nombre esté bien escrito
+            database='desarollo_web',  # ⚠️ Revisa que el nombre esté bien escrito
             port=3307  # 📌 Configurar MySQL en el puerto 3307
         )
 
@@ -16,5 +16,5 @@ def obtener_conexion():
         return conexion
 
     except Error as e:
-        print(f"❌ Error al conectar a MySQL: {e}")
+        print(f"❌ Error al conectar a MySQL::: {e}")
         return None

@@ -109,8 +109,17 @@ def test_db():
         cursor = conexion.cursor()
         cursor.execute("SELECT 'Conexión exitosa a MySQL desde Flask!'")
         mensaje = cursor.fetchone()[0]
+
+        cursor = conexion.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM usuarios")
+        registros = cursor.fetchall()
+
+        for fila in registros:
+            print(fila)
+
         cursor.close()
         conexion.close()
+        return render_template('tabla.html', registros=registros)
     else:
         mensaje = "Error de conexión a la base de datos."
 
