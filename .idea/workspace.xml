@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1f3b874-3b3c-41bd-a785-fdad57cedb9f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/tabla.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="d1f3b874-3b3c-41bd-a785-fdad57cedb9f" name="Changes" comment="ACTUALIZACION CONEXION Y FORMULARIOS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conexion/conexion.py" beforeDir="false" afterPath="$PROJECT_DIR$/conexion/conexion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mi_proyecto_flaskSEM11.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nombres.csv" beforeDir="false" afterPath="$PROJECT_DIR$/nombres.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nombres.json" beforeDir="false" afterPath="$PROJECT_DIR$/nombres.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nombres.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nombres.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,12 +148,25 @@
       <workItem from="1742342460523" duration="2047000" />
       <workItem from="1742348350293" duration="1371000" />
       <workItem from="1742352045901" duration="2361000" />
-      <workItem from="1742356057271" duration="5008000" />
+      <workItem from="1742356057271" duration="5661000" />
     </task>
+    <task id="LOCAL-00001" summary="ACTUALIZACION CONEXION Y FORMULARIOS">
+      <option name="closed" value="true" />
+      <created>1742402311986</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1742402311986</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ACTUALIZACION CONEXION Y FORMULARIOS" />
+    <option name="LAST_COMMIT_MESSAGE" value="ACTUALIZACION CONEXION Y FORMULARIOS" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tarea_sem_13$mi_proyecto_flask3.coverage" NAME="mi_proyecto_flask3 Coverage Results" MODIFIED="1742401721849" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
