@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1f3b874-3b3c-41bd-a785-fdad57cedb9f" name="Changes" comment="Avance tarea sem 14">
+      <change afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nombres.csv" beforeDir="false" afterPath="$PROJECT_DIR$/nombres.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nombres.json" beforeDir="false" afterPath="$PROJECT_DIR$/nombres.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nombres.txt" beforeDir="false" afterPath="$PROJECT_DIR$/nombres.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +30,7 @@
       <list>
         <option value="Flask Main" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -70,6 +81,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "Python.mi_proyecto_flask3.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -149,7 +161,8 @@
       <workItem from="1742352045901" duration="2361000" />
       <workItem from="1742356057271" duration="7524000" />
       <workItem from="1742536135588" duration="1150000" />
-      <workItem from="1742746581246" duration="2989000" />
+      <workItem from="1742746581246" duration="3283000" />
+      <workItem from="1743286683107" duration="8728000" />
     </task>
     <task id="LOCAL-00001" summary="ACTUALIZACION CONEXION Y FORMULARIOS">
       <option name="closed" value="true" />
@@ -183,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742750407222</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Avance tarea sem 14">
+      <option name="closed" value="true" />
+      <created>1742751037774</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1742751037774</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,7 +216,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="Avance tarea sem 14" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Tarea_sem_13$mi_proyecto_flask3.coverage" NAME="mi_proyecto_flask3 Coverage Results" MODIFIED="1742749509740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Tarea_sem_13$mi_proyecto_flask3.coverage" NAME="mi_proyecto_flask3 Coverage Results" MODIFIED="1743298669637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/SEM11$mi_proyecto_flask3.coverage" NAME="mi_proyecto_flask3 Coverage Results" MODIFIED="1742332945025" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/mi_proyecto_flask3$mi_proyecto_flask3.coverage" NAME="mi_proyecto_flask3 Coverage Results" MODIFIED="1740725796280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>

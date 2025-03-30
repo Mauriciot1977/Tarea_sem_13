@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, jsonify
+from flask import Flask, render_template, redirect, url_for, jsonify,request,flash
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
@@ -6,6 +6,9 @@ import json
 import csv
 import os
 from conexion.conexion import obtener_conexion  # Importa la conexión MySQL
+from models import models
+from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
+
 
 
 app = Flask(__name__)
@@ -14,7 +17,18 @@ app.config['SECRET_KEY'] = 'mi_clave_secreta'  # Clave secreta para los formular
 # Archivos para persistencia
 TXT_FILE = "nombres.txt"
 JSON_FILE = "nombres.json"
-CSV_FILE = "nombres.csv"
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
+@login_manager.user_loader
+def load_user(user_id):
+    user_data = models.get_by_id(user_id)
+    print(f"❌ user_data::: {user_data.username}")
+    if user_data:
+        return models.User(user_data.id, user_data.username)
+    return None
 
 # Definir el formulario con FlaskForm
 class NombreForm(FlaskForm):
@@ -72,7 +86,7 @@ def guardar_en_mysql(nombre):
     if conexion:
         try:
             cursor = conexion.cursor()
-            cursor.execute("INSERT INTO nombres (nombre) VALUES (%s)", (nombre,))
+            cursor.execute("INSERT INTO usuarios (nombre) VALUES (%s)", (nombre,))
             conexion.commit()
         finally:
             cursor.close()
@@ -95,12 +109,15 @@ def leer_desde_mysql():
 # Ruta principal
 @app.route('/')
 def home():
-    return render_template('index.html')
+    print(f"❌ Ingresa::: {current_user}")
+    return render_template('index.html', usuario=current_user)
 
 # Ruta "Acerca de"
 @app.route('/about')
+@login_required
 def about():
-    return render_template('about.html')
+    return render_template('about.html', usuario=current_user)
+
 
 @app.route('/test_db')
 def test_db():
@@ -137,10 +154,6 @@ def usuarios_formularios():
         mensaje = "Error de conexión a la base de datos."
 
     return mensaje
-
-
-
-
 
 
 # Ruta para el formulario
@@ -184,6 +197,52 @@ def leer_csv():
 def leer_mysql():
     nombres = leer_desde_mysql()
     return jsonify(nombres=nombres)
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    conexion = obtener_conexion()
+    if request.method == 'POST':
+        username = request.form['username']
+        password =request.form['password']
+        if conexion:
+            try:
+                cursor = conexion.cursor()
+                cursor.execute("INSERT INTO usuarios (username, password) VALUES (%s, %s)", (username, password))
+                conexion.commit()
+                flash('Usuario registrado correctamente', 'success')
+                return redirect(url_for('usuarios_formularios'))
+            finally:
+                cursor.close()
+                conexion.close()
+    return render_template('register.html')
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    conexion = obtener_conexion()
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        cursor = conexion.cursor()
+        cursor.execute("SELECT id, username, password FROM usuarios WHERE username = %s and password= %s", (username,password))
+        user = cursor.fetchone()
+        cursor.close()
+
+        if user :
+            user_obj = models.User(user[0], user[1])
+            login_user(user_obj)
+            flash('Inicio de sesión exitoso', 'success')
+            return redirect(url_for('home'))
+        else:
+            flash('Usuario o contraseña incorrectos', 'danger')
+
+    return render_template('login.html')
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('Sesión cerrada', 'info')
+    return redirect(url_for('home'))
 
 if __name__ == '__main__':
     app.run(debug=True)

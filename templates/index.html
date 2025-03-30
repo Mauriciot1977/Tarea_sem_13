@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 
+
 {% block title %}Inicio - Mi Aplicación Flask{% endblock %}
 
 {% block content %}
     <h2>¡Bienvenido a mi aplicación Flask!</h2>
-    {% if usuario %}
-        <p>Hola, {{ usuario }}!</p>
+    {% if usuario.is_authenticated %}
+        <p>Hola, {{ usuario.username }}!</p>
+        <a href="{{ url_for('logout') }}">Cerrar sesión</a>
     {% else %}
-        <p>Por favor, inicia sesión o explora el sitio.</p>
+        <p>Por favor, inicia sesión o explora el sitio.....</p>
     {% endif %}
 {% endblock %}

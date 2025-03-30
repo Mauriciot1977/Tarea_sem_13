@@ -12,8 +12,10 @@
         <nav>
             <ul>
                 <li><a href="{{ url_for('home') }}">Inicio</a></li>
-                <li><a href="{{ url_for('about') }}">Acerca de</a></li>
-                <li><a href="{{ url_for('formulario') }}">Formulario</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('about') }}">Acerca de(Página Solo Para Usuarios Logeados)</a></li>
+                <li><a href="{{ url_for('usuarios_formularios') }}">Usuarios Ingresados</a></li>
+                <li><a href="{{ url_for('register') }}">Registro usuarios</a></li>
             </ul>
         </nav>
     </header>
