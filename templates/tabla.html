@@ -1,30 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Usuarios</title>
-    <style>
-        table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-    </style>
-</head>
-<body>
+{% extends "base.html" %}
 
+{% block title %}Inicio - Mi Aplicación{% endblock %}
+
+{% block content %}
     <h2 style="text-align:center;">Registros de la Base de Datos</h2>
-    <table>
+    <table class="table responsive-table__container">
         <thead>
             <tr>
                 {% for col in registros[0].keys() %}
@@ -42,6 +22,4 @@
             {% endfor %}
         </tbody>
     </table>
-
-</body>
-</html>
+{% endblock %}

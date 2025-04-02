@@ -1,5 +1,26 @@
-<form method="POST">
-    <input type="text" name="username" placeholder="Usuario" required>
-    <input type="password" name="password" placeholder="Contraseña" required>
-    <button type="submit">Registrarse</button>
-</form>
+{% extends "base.html" %}
+
+{% block title %}Registro de Nuevo usuario:{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-center mt-4">
+    <div class="card p-4 shadow-lg" style="width: 22rem;">
+        <h3 class="text-center">Registro de Nuevo Usuario</h3>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="username" class="form-label">Usuario</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Ingresa tu usuario" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Ingresa tu correo" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Ingresa tu contraseña" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

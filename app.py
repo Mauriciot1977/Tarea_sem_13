@@ -1,3 +1,4 @@
+import bcrypt
 from flask import Flask, render_template, redirect, url_for, jsonify,request,flash
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
@@ -8,12 +9,13 @@ import os
 from conexion.conexion import obtener_conexion  # Importa la conexión MySQL
 from models import models
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
+from flask_bcrypt import Bcrypt
 
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mi_clave_secreta'  # Clave secreta para los formularios
-
+bcrypt = Bcrypt(app)
 # Archivos para persistencia
 TXT_FILE = "nombres.txt"
 JSON_FILE = "nombres.json"
@@ -118,6 +120,88 @@ def home():
 def about():
     return render_template('about.html', usuario=current_user)
 
+@app.route('/productos')
+@login_required
+def productos():
+    conexion = obtener_conexion()
+    if conexion:
+
+        cursor = conexion.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM productos")
+        productos = cursor.fetchall()
+
+        for fila in productos:
+            print(fila)
+
+        cursor.close()
+        conexion.close()
+        return render_template('productos.html', productos=productos,usuario=current_user)
+    else:
+        mensaje = "Error de conexión a la base de datos."
+
+        return mensaje
+
+@app.route('/producto/nuevo', methods=['GET', 'POST'])
+@login_required
+def agregar_producto():
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        precio = request.form['precio']
+        precio1 = request.form['precio1']
+        precio2 = request.form['precio2']
+        cantidad = request.form['cantidad']
+        descripcion = request.form['descripcion']
+
+        conexion = obtener_conexion()
+        cursor = conexion.cursor()
+        cursor.execute("INSERT INTO productos (nombre, precio,precio1,precio2,cantidad, descripcion) VALUES (%s, %s,%s,%s,%s,%s)", (nombre, precio,precio1,precio2,cantidad,descripcion))
+        conexion.commit()
+        cursor.close()
+        conexion.close()
+        flash("Producto agregado correctamente", "success")
+        return redirect(url_for('productos'))
+    return render_template('agregar_producto.html')
+
+
+@app.route('/producto/editar/<int:id>', methods=['GET', 'POST'])
+@login_required
+def editar_producto(id):
+    conexion = obtener_conexion()
+    cursor = conexion.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM productos WHERE id = %s", (id,))
+    producto = cursor.fetchone()
+    cursor.close()
+    conexion.close()
+
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        precio = request.form['precio']
+        precio1 = request.form['precio1']
+        precio2 = request.form['precio2']
+        cantidad = request.form['cantidad']
+        descripcion = request.form['descripcion']
+        conexion = obtener_conexion()
+        cursor = conexion.cursor()
+        cursor.execute("UPDATE productos SET nombre=%s, precio=%s,precio1=%s,precio2=%s,cantidad=%s,descripcion=%s WHERE id=%s", (nombre, precio,precio1,precio2,cantidad,descripcion, id))
+        conexion.commit()
+        cursor.close()
+        conexion.close()
+        flash("Producto actualizado correctamente", "success")
+        return redirect(url_for('productos'))
+
+    return render_template('editar_producto.html', producto=producto)
+
+@app.route('/producto/eliminar/<int:id>', methods=['POST'])
+@login_required
+def eliminar_producto(id):
+    conexion = obtener_conexion()
+    cursor = conexion.cursor()
+    cursor.execute("DELETE FROM productos WHERE id = %s", (id,))
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+    flash("Producto eliminado correctamente", "danger")
+    return redirect(url_for('productos'))
 
 @app.route('/test_db')
 def test_db():
@@ -203,11 +287,12 @@ def register():
     conexion = obtener_conexion()
     if request.method == 'POST':
         username = request.form['username']
-        password =request.form['password']
+        password = bcrypt.generate_password_hash(request.form['password']).decode('utf-8')
+        email = request.form['email']
         if conexion:
             try:
                 cursor = conexion.cursor()
-                cursor.execute("INSERT INTO usuarios (username, password) VALUES (%s, %s)", (username, password))
+                cursor.execute("INSERT INTO usuarios (username, password,email) VALUES (%s, %s,%s)", (username, password,email))
                 conexion.commit()
                 flash('Usuario registrado correctamente', 'success')
                 return redirect(url_for('usuarios_formularios'))
@@ -223,15 +308,21 @@ def login():
         password = request.form['password']
 
         cursor = conexion.cursor()
-        cursor.execute("SELECT id, username, password FROM usuarios WHERE username = %s and password= %s", (username,password))
+        cursor.execute("SELECT id, username, password FROM usuarios WHERE username = %s ", (username,))
         user = cursor.fetchone()
         cursor.close()
 
         if user :
-            user_obj = models.User(user[0], user[1])
-            login_user(user_obj)
-            flash('Inicio de sesión exitoso', 'success')
-            return redirect(url_for('home'))
+            stored_password = user[2]
+            if bcrypt.check_password_hash(stored_password, password):
+                # Contraseña correcta
+                user_obj = models.User(user[0], user[1])
+                login_user(user_obj)
+                flash('Inicio de sesión exitoso', 'success')
+                return redirect(url_for('home'))
+            else:
+                flash('Contraseña incorrecta', 'error')
+
         else:
             flash('Usuario o contraseña incorrectos', 'danger')
 

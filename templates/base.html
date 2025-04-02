@@ -4,28 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Mi Aplicación Flask{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body>
-    <header>
-        <h1>Mi Aplicación Flask</h1>
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('home') }}">Inicio</a></li>
-                <li><a href="{{ url_for('login') }}">Login</a></li>
-                <li><a href="{{ url_for('about') }}">Acerca de(Página Solo Para Usuarios Logeados)</a></li>
-                <li><a href="{{ url_for('usuarios_formularios') }}">Usuarios Ingresados</a></li>
-                <li><a href="{{ url_for('register') }}">Registro usuarios</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-success bg-success text-white">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">Mi Aplicación Flask</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-white" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">Acerca de</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('usuarios_formularios') }}">Usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Registro</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('productos') }}">Productos</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenedor principal -->
+    <div class="container mt-4">
         {% block content %}{% endblock %}
-    </main>
+    </div>
 
-    <footer>
-        <p>&copy; 2025 Mi Aplicación Flask</p>
+    <!-- Pie de página -->
+    <footer class="text-red text-center py-3 mt-4">
+        &copy; 2025 Mi Aplicación Flask
     </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

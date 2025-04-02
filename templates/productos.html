@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio - Mi Aplicación{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+    <h2 class="text-center">Lista de Productos</h2>
+    <a href="{{ url_for('agregar_producto') }}" class="btn btn-primary mb-3">Agregar Producto</a>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Precio1</th>
+                <th>Precio2</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+            <tr>
+                <td>{{ producto.id }}</td>
+                <td>{{ producto.nombre }}</td>
+                <td>${{ producto.precio }}</td>
+                <td>${{ producto.precio1 }}</td>
+                <td>${{ producto.precio2 }}</td>
+                <td>{{ producto.descripcion }}</td>
+                <td>{{ producto.cantidad }}</td>
+                <td>
+                    <a href="{{ url_for('editar_producto', id=producto.id) }}" class="btn btn-warning btn-sm">Editar</a>
+                    <form action="{{ url_for('eliminar_producto', id=producto.id) }}" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro?')">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
