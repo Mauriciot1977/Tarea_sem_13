@@ -157,7 +157,8 @@
       <workItem from="1743629143167" duration="4529000" />
       <workItem from="1743634718004" duration="1430000" />
       <workItem from="1743826898466" duration="1010000" />
-      <workItem from="1743827970293" duration="416000" />
+      <workItem from="1743827970293" duration="1447000" />
+      <workItem from="1743829843258" duration="1205000" />
     </task>
     <task id="LOCAL-00001" summary="ACTUALIZACION CONEXION Y FORMULARIOS">
       <option name="closed" value="true" />
@@ -223,7 +224,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743637430967</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Avance tarea sem 15">
+      <option name="closed" value="true" />
+      <created>1743828541466</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1743828541466</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,7 +245,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="Avance tarea sem 15" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Tarea_sem_13$mi_proyecto_flask3.coverage" NAME="mi_proyecto_flask3 Coverage Results" MODIFIED="1743828091752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Tarea_sem_13$mi_proyecto_flask3.coverage" NAME="mi_proyecto_flask3 Coverage Results" MODIFIED="1743830323147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/SEM11$mi_proyecto_flask3.coverage" NAME="mi_proyecto_flask3 Coverage Results" MODIFIED="1742332945025" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/mi_proyecto_flask3$mi_proyecto_flask3.coverage" NAME="mi_proyecto_flask3 Coverage Results" MODIFIED="1740725796280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
